@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ListDataActivity" android:label="SaveAndDisplaySQL"/>
+        <activity android:name=".EditDataActivity" android:label="EditingOrDeletingData" />
     </application>
 
 </manifest>

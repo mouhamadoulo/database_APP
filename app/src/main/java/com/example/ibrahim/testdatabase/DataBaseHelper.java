@@ -55,4 +55,29 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Cursor data = mydb.rawQuery(query,null);
         return data;
     }
+
+    //méthode pour récupérer l'ID d'un élément
+    public Cursor getItemID(String name){
+        SQLiteDatabase mydb = this.getWritableDatabase();
+        String query = "SELECT "+COL1+" FROM "+TABLE_NAME+" WHERE "+COL2+" = '"+name+"'";
+        Cursor data = mydb.rawQuery(query,null);
+        return data;
+    }
+
+    //méthode pour modifier une entrée de notre table
+    public void updateName(String newName,int id,String oldName){
+        SQLiteDatabase mydb = this.getWritableDatabase();
+        String query = "UPDATE "+TABLE_NAME+" SET "+COL2+
+                " = '"+newName+"' WHERE "+COL1+" = '"+id+"'"+
+                " AND "+COL2+" = '"+oldName+"'";
+        mydb.execSQL(query);
+    }
+
+    //méthode pour supprimer une entrée de notre table
+    public void deleteName(int id,String name){
+        SQLiteDatabase mydb = this.getWritableDatabase();
+        String query = "DELETE FROM "+TABLE_NAME+" WHERE "
+                +COL1+" = '"+id+"'"+" AND "+COL2+" = '"+name+"'";
+        mydb.execSQL(query);
+    }
 }
